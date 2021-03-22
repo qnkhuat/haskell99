@@ -83,8 +83,49 @@ Example in Haskell:
 p04 :: [a] -> Int
 p04 [] = 0
 p04 (x:xs) =  1 + p04 xs
+
+--- test
 test04 = [p04 [1, 2, 3] == 3,
           p04 "Hello, world!" == 13]
+
+
+{------------------------------- p05 ------------------------------
+(*) Reverse a list.
+
+Example in Haskell:
+
+λ> myReverse "A man, a plan, a canal, panama!"
+"!amanap ,lanac a ,nalp a ,nam A"
+λ> myReverse [1,2,3,4]
+[4,3,2,1]
+-------------------------------------------------------------------}
+p05 :: [a] -> [a]
+p05 [] = []
+p05 (x:xs) = p05 xs ++ [x]
+--- test
+test05 = [p05 "A man, a plan, a canal, panama!" == "!amanap ,lanac a ,nalp a ,nam A",
+          p05 [1,2,3,4] == [4,3,2,1]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --- main
@@ -93,6 +134,7 @@ runTest [] = "No test cases"
 runTest x = if all (id) x
                then "Test succeeded " ++ show x
                else "Test failed " ++ show x
-testcases = [test01, test02, test03, test04]
+
+testcases = [test01, test02, test03, test04, test05]
 main = do
     putStr $ unlines $ map runTest (testcases)
